@@ -3,21 +3,20 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS_ID = 'dockerhub_credential'
-        DOCKERHUB_REPO = 'darkpunkki/dockerproject'
+        DOCKERHUB_REPO = 'darkpunk/dockerproject'
         DOCKER_IMAGE_TAG = 'ver1'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ADirin/devopschain_f2024.git'
+                git 'https://github.com/Darkpunkki/dockerproject.git'
             }
         }
         stage('Run Tests') {
             steps {
                 // Run the tests first to generate data for Jacoco and JUnit
                 bat 'mvn clean test' // For Windows agents
-                // sh 'mvn clean test' // Uncomment if on a Linux agent
             }
         }
         stage('Code Coverage') {
